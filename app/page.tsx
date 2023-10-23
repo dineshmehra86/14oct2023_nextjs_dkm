@@ -12,7 +12,7 @@ import { useState } from 'react';
   
   // 2.2 function 
   // New way to define the function in ES6 (2015)
-  const handleChange = (event: { target: { value: any; }; }) => { 
+  const handleChange = (event:any) => { 
              // object.property.property
     console.log(event.target.value);
     
