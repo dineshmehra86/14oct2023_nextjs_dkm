@@ -12,7 +12,7 @@ import { useState } from 'react';
   
   // 2.2 function 
   // New way to define the function in ES6 (2015)
-  const handleChange = (event:any) => { 
+  const handleChange = (event) => { 
              // object.property.property
     console.log(event.target.value);
     
@@ -31,7 +31,7 @@ import { useState } from 'react';
     
     // Now call the api
 
-    // setSelectedValue(event.target.value)
+    setSelectedValue(event.target.value)
   }
 
   return (
