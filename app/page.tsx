@@ -9,14 +9,14 @@ import { useState } from 'react';
  function Home() { // old way to define the function
   // 2.1 Hooks area
   const [selectedValue, setSelectedValue] = useState('');
-  const [stockPrice, setstockPrice] = useState('');
+  const [stockPrice, setStockPrice] = useState('');
   
   // 2.2 function 
   // New way to define the function in ES6 (2015)
-  const handleChange = (dinesh:React.ChangeEvent<HTMLInputElement>) => { 
+  const handleChange = (event) => { 
              // object.property.property
-    console.log(dinesh.target.value);
-    const newValue = dinesh.target.value;
+    console.log(event.target.value);
+    const newValue = event.target.value;
     setSelectedValue(newValue);
     
     // This is call promiseChain
@@ -25,9 +25,9 @@ import { useState } from 'react';
     }).then((data)=>{
       console.log(data);
       console.log(data.price);
-      setstockPrice(data.price);
+      setStockPrice(data.price);
     }).catch((err)=>{
-
+      console.error('Error fetching stock price:', err);
     }).finally(()=>{
 
     }) 
