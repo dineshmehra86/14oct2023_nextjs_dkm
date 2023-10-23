@@ -15,8 +15,6 @@ import { useState } from 'react';
   const handleChange = (event: { target: { value: any; }; }) => { 
              // object.property.property
     console.log(event.target.value);
-    const newValue = event.target.value;
-    setSelectedValue(newValue);
     
     // This is call promiseChain
     fetch('/api/getstockprice').then((res)=>{
