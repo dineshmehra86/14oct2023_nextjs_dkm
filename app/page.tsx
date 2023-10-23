@@ -13,7 +13,7 @@ import { useState } from 'react';
   
   // 2.2 function 
   // New way to define the function in ES6 (2015)
-  const handleChange = (dinesh) => { 
+  const handleChange = (dinesh:React.ChangeEvent<HTMLInputElement>) => { 
              // object.property.property
     console.log(dinesh.target.value);
     const newValue = dinesh.target.value;
