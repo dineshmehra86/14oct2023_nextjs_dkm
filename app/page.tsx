@@ -3,8 +3,6 @@
 import React from 'react'
 import { Select, MenuItem } from "@mui/material";
 import { useState } from 'react';
-import { SelectChangeEvent } from "@mui/material";
-
 
 // 1. Function Defination Area
  function Home() { // old way to define the function
@@ -14,7 +12,7 @@ import { SelectChangeEvent } from "@mui/material";
   
   // 2.2 function 
   // New way to define the function in ES6 (2015)
-  const handleChange = (event:SelectChangeEvent) => { 
+  const handleChange = (event: { target: { value: any; }; }) => { 
              // object.property.property
     console.log(event.target.value);
     const newValue = event.target.value;
