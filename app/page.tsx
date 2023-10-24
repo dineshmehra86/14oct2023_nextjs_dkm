@@ -2,22 +2,33 @@
 // 1. Import area
 import React from 'react'
 import { Select, MenuItem } from "@mui/material";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+
 
 // 1. Function Defination Area
  function Home() { // old way to define the function
   // 2.1 Hooks area
+  const [stockName, setStockName] = useState('');
   const [selectedValue, setSelectedValue] = useState('');
   const [stockPrice, setStockPrice] = useState('');
+
+  // useEffect do something after the page load
+  useEffect(()=>{
+    setInterval(function(){
+      console.log("Okey");
+      getStockPrice(stockName); // I want to use DRY principal
+    },8000);
+  },[stockName]);
+
   
   // 2.2 function 
   // New way to define the function in ES6 (2015)
-  const handleChange = (event) => { 
-             // object.property.property
-    console.log(event.target.value);
-    
-    // This is call promiseChain
-    fetch('/api/getstockprice').then((res)=>{
+  const getStockPrice = (sn) => {
+ // This is call promiseChain
+    fetch(`/api/getstockprice?stockName=${sn}`)
+    .then((res)=>{
       return res.json()
     }).then((data)=>{
       console.log(data);
@@ -28,20 +39,31 @@ import { useState } from 'react';
     }).finally(()=>{
 
     }) 
+  }
+  const handleChange = (dkm) => { 
+             // object.property.property
+    console.log(dkm.target.value);
+    setStockName(dkm.target.value);
+    getStockPrice(dkm.target.value); // I want to use DRY principal
     
-    // Now call the api
-
-    setSelectedValue(event.target.value)
+    // setSelectedValue(dkm.target.value)
   }
 
+  // 2.3 Return Statement
   return (
-    <main className="flex min-h-screen1 flex-col items-center justify-between p-24">
-      <h1 className='p-0 pb-10 m-0'>Current price of below stock is {stockPrice}</h1>
-      <Select value={selectedValue} onChange={handleChange}>
-        <MenuItem value="idfc">IDFC Bank</MenuItem>
-        <MenuItem value="hdfc">HDFC Bank</MenuItem>
-        <MenuItem value="icici">ICICI</MenuItem>
+    <main className="flex min-h-screen flex-col items-center justify-between pl-10 pr-10 pt-10 pb-10;">
+      <Box sx={{
+        width:'100%',
+        backgroundColor: 'primary.light',
+        padding: '25px'
+      }}>
+      <Typography variant="h1" sx={{ fontSize: '1.5rem' }} className='p-0 pb-10 m-0 fs-5'>The current price of the {stockName} Stock is Rs. {stockPrice}</Typography>
+      <Select className='w-full' value={selectedValue} onChange={handleChange}>
+        <MenuItem value="ICICI">ICICI Bank</MenuItem>
+        <MenuItem value="HDFC">HDFC Bank</MenuItem>
+        <MenuItem value="IDFC">IDFC Bank</MenuItem>
       </Select>
+      </Box>
     </main>
   )
 }
