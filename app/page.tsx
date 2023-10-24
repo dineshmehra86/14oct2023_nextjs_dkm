@@ -25,7 +25,7 @@ import Typography from '@mui/material/Typography';
   
   // 2.2 function 
   // New way to define the function in ES6 (2015)
-  const getStockPrice = (sn : string) => {
+  const getStockPrice = (sn:any) => {
  // This is call promiseChain
     fetch(`/api/getstockprice?stockName=${sn}`)
     .then((res)=>{
@@ -40,7 +40,7 @@ import Typography from '@mui/material/Typography';
 
     }) 
   }
-  const handleChange = (dkm) => { 
+  const handleChange = (dkm:any) => { 
              // object.property.property
     console.log(dkm.target.value);
     setStockName(dkm.target.value);
