@@ -25,7 +25,7 @@ import Typography from '@mui/material/Typography';
   
   // 2.2 function 
   // New way to define the function in ES6 (2015)
-  const getStockPrice = (sn) => {
+  const getStockPrice = (sn : string) => {
  // This is call promiseChain
     fetch(`/api/getstockprice?stockName=${sn}`)
     .then((res)=>{
