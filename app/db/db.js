@@ -1,8 +1,8 @@
 import { MongoClient } from 'mongodb'
 
-const uri = 'mongodb+srv://dineshmehra86:7kNf9PA6DadnEnga@cluster0.yl57w9z.mongodb.net/';
+// const uri = 'mongodb+srv://dineshmehra86:7kNf9PA6DadnEnga@cluster0.yl57w9z.mongodb.net/';
 // const object = new ClassName(actualArgument);
-const client = new MongoClient(uri);
+const client = new MongoClient(process.env.MONGODB_URI);
 
 // object.method();
 // object.properties
